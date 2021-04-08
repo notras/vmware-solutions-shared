@@ -15,12 +15,12 @@ variable "vcd_org" {
 
 variable "vcd_url" {
   description = "vCloud Director url."
-  default = "https://daldir01.vmware-solutions.cloud.ibm.com/api"
+  default = "https://fradir01.vmware-solutions.cloud.ibm.com/api"
 }
 
 variable "vdc_name" {
   description = "vCloud Director virtual datacenter."
-  default = "vmware-tutorial"
+  default = "vmwarefra"
 }
 
 variable "vdc_edge_gateway_name" {
