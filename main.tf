@@ -149,8 +149,8 @@ resource "vcd_vapp_vm" "vm_1" {
   name          = "vm-centos8-01"
   catalog_name  = "Public Catalog"
   template_name = "CentOS-8-Template-Official"
-  memory        = 8192
-  cpus          = 2
+  memory        = 2048
+  cpus          = 1
 
   guest_properties = {
     "guest.hostname" = "vm-centos8-01"
