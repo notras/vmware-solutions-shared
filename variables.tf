@@ -28,7 +28,7 @@ variable "vdc_edge_gateway_name" {
   default = ""
 }
 
-variable "allow_ssh" {
-  description = "Set to false to not configure SSH into the VM."
+variable "allow_rdp" {
+  description = "Set to false to not configure rdp into the VM."
   default = true
 }
