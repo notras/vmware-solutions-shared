@@ -81,23 +81,23 @@ resource "vcd_nsxv_firewall_rule" "rule_internet_ssh" {
 
   service {
     protocol = "tcp"
-    port     = 22
+    port     = 3389
   }
 }
 
 # Create DNAT rule to allow SSH from the Internet
-resource "vcd_nsxv_dnat" "rule_internet_ssh" {
-  count = tobool(var.allow_ssh) == true ? 1 :0
+resource "vcd_nsxv_dnat" "rule_internet_rdp" {
+  count = tobool(var.allow_rdp) == true ? 1 :0
 
   edge_gateway = module.ibm_vmware_solutions_shared_instance.edge_gateway_name
   network_type = "ext"
   network_name = module.ibm_vmware_solutions_shared_instance.external_network_name_2
 
   original_address = module.ibm_vmware_solutions_shared_instance.default_external_network_ip
-  original_port    = 22
+  original_port    = 3389
 
   translated_address = vcd_vapp_vm.vm_1.network[0].ip
-  translated_port    = 22
+  translated_port    = 3389
   protocol           = "tcp"
 }
 
@@ -146,11 +146,11 @@ resource "vcd_vapp_org_network" "tutorial_network" {
 # Create VM
 resource "vcd_vapp_vm" "vm_1" {
   vapp_name     = vcd_vapp.vmware_tutorial_vapp.name
-  name          = "vm-centos8-01"
+  name          = "vm-win2016"
   catalog_name  = "Public Catalog"
-  template_name = "CentOS-8-Template-Official"
-  memory        = 2048
-  cpus          = 1
+  template_name = "Windows-2016-Template-Official"
+  memory        = 16384
+  cpus          = 4
 
   guest_properties = {
     "guest.hostname" = "vm-centos8-01"
