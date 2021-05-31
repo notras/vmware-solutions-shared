@@ -62,12 +62,12 @@ resource "vcd_nsxv_snat" "rule_internet" {
   translated_address = module.ibm_vmware_solutions_shared_instance.default_external_network_ip
 }
 
-# Create the firewall rule to allow SSH from the Internet
-resource "vcd_nsxv_firewall_rule" "rule_internet_ssh" {
-  count = tobool(var.allow_ssh) == true ? 1 :0
+# Create the firewall rule to allow RDP from the Internet
+resource "vcd_nsxv_firewall_rule" "rule_internet_rdp" {
+  count = tobool(var.allow_rdp) == true ? 1 :0
 
   edge_gateway = module.ibm_vmware_solutions_shared_instance.edge_gateway_name
-  name         = "${vcd_network_routed.tutorial_network.name}-Internet-SSH"
+  name         = "${vcd_network_routed.tutorial_network.name}-Internet-rdp"
 
   action = "accept"
 
@@ -85,7 +85,7 @@ resource "vcd_nsxv_firewall_rule" "rule_internet_ssh" {
   }
 }
 
-# Create DNAT rule to allow SSH from the Internet
+# Create DNAT rule to allow RDP from the Internet
 resource "vcd_nsxv_dnat" "rule_internet_rdp" {
   count = tobool(var.allow_rdp) == true ? 1 :0
 
