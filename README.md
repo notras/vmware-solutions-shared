@@ -8,6 +8,7 @@ Use this template to configure and provision virtual machines inside of an IBM C
 2. Create a VMWare Solutions Shared using the IBM Cloud console.
 3. Review a Terraform template that will be used to create various resources in the virtual data center (VDC).
 4. Use the Schematics service to run the template and to create the instance in the VDC.
+5. It will deploy Windows VM and enable rdp access
 
 # Costs
 
