@@ -149,7 +149,7 @@ resource "vcd_vapp_vm" "vm_1" {
   name          = "vm-win2016"
   catalog_name  = "Public Catalog"
   template_name = "Windows-2016-Template-Official"
-  memory        = 4
+  memory        = 8
   cpus          = 2
 
   guest_properties = {
