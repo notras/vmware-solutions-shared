@@ -134,7 +134,7 @@ resource "vcd_nsxv_snat" "rule_ibm_private" {
 
 # Create vcd App
 resource "vcd_vapp" "vmware_win_vapp" {
-  name = "vmware-tutorial-vApp"
+  name = "vmware-win-vApp"
 }
 
 # Connect org Network to vcpApp
@@ -142,7 +142,7 @@ resource "vcd_vapp_org_network" "tutorial_network" {
   vapp_name        = vcd_vapp.vmware_win_vapp.name
   org_network_name = vcd_network_routed.tutorial_network.name
 }
-
+    
 # Create VM
 resource "vcd_vapp_vm" "vm_1" {
   vapp_name     = vcd_vapp.vmware_win_vapp.name
